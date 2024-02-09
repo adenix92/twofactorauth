@@ -1,0 +1,50 @@
+﻿@model sheddy.Models.SignInModel
+@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section class="sign-in">
+    <div class="container">
+        <div class="signin-content">
+            <div class="signin-image">
+                <figure><img src="https://colorlib.com/etc/regform/colorlib-regform-7/images/signin-image.jpg" alt="sing up image"></figure>
+                <a href="Index" class="signup-image-link">Create an account</a>
+            </div>
+            <div class="signin-form">
+                <h2 class="form-title">Sign In</h2>
+               <p>@ViewBag.error</p>
+                @using (Html.BeginForm("SignIn", "Home", FormMethod.Post, new { @class = "register-form", @id = "login-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        @Html.TextBoxFor(x => x.email, htmlAttributes: new { @id = "username", @placeholder = "Username" })
+                        @Html.ValidationMessageFor(x => x.email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                        @Html.PasswordFor(x => x.UserPassword, htmlAttributes: new { id = "your_pass", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(x=>x.UserPassword,"", new { @class="text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
+                        <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                    </div>
+                    <div class="form-group form-button">
+                        <input type="submit" name="signin" id="signin" class="form-submit" value="Log in">
+                    </div>
+                }
+                <div class="social-login">
+                    <span class="social-label">Social</span>
+                    <ul class="socials">
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project By Sheddy</title>
+
+    <link rel="stylesheet" href="https://colorlib.com/etc/regform/colorlib-regform-7/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <link rel="stylesheet" href="https://colorlib.com/etc/regform/colorlib-regform-7/css/style.css">
+    <meta name="robots" content="noindex, follow">
+</head>
+<body>
+    <div class="main">
+
+        @RenderBody()
+        
+    </div>
+
+    <script src="https://colorlib.com/etc/regform/colorlib-regform-7/vendor/jquery/jquery.min.js"></script>
+    <script src="https://colorlib.com/etc/regform/colorlib-regform-7/js/main.js"></script>
+
+    <script src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"></script>
+
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $("#signup").hide();
+        $("#agree-term").change(function () {
+            if ($(this).is(":checked")) {
+                $("#signup").show();
+            }
+            else {
+                $("#signup").hide();
+            }
+            })
+    })
+</script>

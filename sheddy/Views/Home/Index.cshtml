@@ -1,0 +1,58 @@
+﻿@model sheddy.Models.UserAccountModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title">Sign up</h2>
+                <p>@ViewBag.error</p>
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "register-form", @id = "register-form" })) {
+                @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        
+                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        @Html.TextBoxFor(x=>x.Firstname,htmlAttributes:new  { @id = "name", @placeholder = "Your Name" })
+                        
+                        @Html.ValidationMessageFor(x => x.Firstname, "", new { @class = "text text-danger" })
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <label for="email"><i class="zmdi zmdi-email"></i></label>
+                        @Html.TextBoxFor(x=>x.email,htmlAttributes:new { @id = "email" ,@placeholder = "Your Email" })
+                        @Html.ValidationMessageFor(x=>x.email,"",new {@class="text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                        @Html.PasswordFor(x=>x.UserPassword,htmlAttributes: new { @id = "pass" ,@placeholder = "Password" })
+                        @Html.ValidationMessageFor(x=>x.UserPassword,"", new { @class="text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                        @Html.PasswordFor(x=>x.VerifyPassword,htmlAttributes: new { @id = "re_pass" ,@placeholder = "Repeat your password" })
+                        @Html.ValidationMessageFor(x=>x.VerifyPassword,"", new { @class="text-danger"})
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term">
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>
+                        I agree all statements in <a href="#" class="term-service">Terms of service</a></label>
+                    </div>
+                    <div class="form-group form-button">
+                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register">
+                    </div>
+               
+                }
+            </div>
+            <div class="signup-image">
+                <figure><img src="https://colorlib.com/etc/regform/colorlib-regform-7/images/signup-image.jpg" alt="sing up image"></figure>
+                <a href="SignIn" class="signup-image-link">I am already member</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
