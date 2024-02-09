@@ -42,7 +42,7 @@ namespace sheddy.Controllers
                     int Id = u.UserId;
                     if (Id > 0)
                     {
-                        var from = "from:Account Confirmation<noreply@minpip.com>";
+                        var from = "from:Account Confirmation<email@anything.com>";
                         MailMessage mail = new MailMessage();
                         mail.To.Add(u.email);
                         mail.From = new MailAddress(from);
@@ -58,7 +58,7 @@ namespace sheddy.Controllers
                         mail.Body = Body;
                         mail.IsBodyHtml = true;
                         SmtpClient smtp = new SmtpClient();
-                        smtp.Host = "mail.minpip.com";
+                        smtp.Host = "host";
                         smtp.Port = 8889;
                         smtp.UseDefaultCredentials = false;
                         smtp.Credentials = new System.Net.NetworkCredential("", ""); // Enter seders User name and password  
@@ -123,10 +123,10 @@ namespace sheddy.Controllers
                     mail.Body = Body;
                     mail.IsBodyHtml = true;
                     SmtpClient smtp = new SmtpClient();
-                    smtp.Host = "mail.minpip.com";
-                    smtp.Port = 8889;
+                    smtp.Host = "host";
+                    smtp.Port = 0;
                     smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new System.Net.NetworkCredential("noreply@minpip.com", "Realtech01"); // Enter seders User name and password  
+                    smtp.Credentials = new System.Net.NetworkCredential("username", "password"); // Enter seders User name and password  
                     smtp.EnableSsl = false;
                     smtp.Send(mail);
                    
